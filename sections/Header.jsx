@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
+import { useSession, signIn } from "next-auth/client";
 import Logo from "../components/Logo";
 import { MoonIcon, SunIcon } from "@heroicons/react/solid";
 
 const Header = () => {
   const { systemTheme, theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [session, loading] = useSession();
 
   useEffect(() => {
     setMounted(true);
@@ -38,7 +40,30 @@ const Header = () => {
     <header className="border-b border-gray-100 dark:border-gray-700">
       <div className="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
         <Logo />
-        {renderThemeChanger()}
+        <div className="flex items-center space-x-3">
+          {renderThemeChanger()}
+
+          {!loading ? (
+            <div>
+              {!session ? (
+                <button
+                  type="button"
+                  onClick={signIn}
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 
+                rounded-md focus:outline-none focus:ring-4 focus:ring-blue-600
+                focus:ring-opacity-50 whitespace-nowrap"
+                >
+                  Sign in
+                </button>
+              ) : (
+                <div className="flex items-center space-x-1 sm:space-x-2">
+                  <img src={session.user.image} alt={session.user.name} />
+                  <p>Hello, {session.user.name?.split(" ")?.[0] ?? "there"}</p>
+                </div>
+              )}
+            </div>
+          ) : null}
+        </div>
       </div>
     </header>
   );
