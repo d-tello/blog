@@ -1,14 +1,24 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import { useSession, signIn } from "next-auth/client";
+import useMediaquery from "..hooks/use-media-query";
 import Logo from "../components/Logo";
-import { MoonIcon, SunIcon } from "@heroicons/react/solid";
+import FlyoutMenu from "../components/FlyoutMenu";
+import MobileMenu from "../components/MobileMenu";
+import {
+  ChevronDoubleDownIcon,
+  MoonIcon,
+  SunIcon,
+} from "@heroicons/react/solid";
 
 const Header = () => {
   const { systemTheme, theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [session, loading] = useSession();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const containerRef = useRef();
+  const isLargeScreen = useMediaquery(["(min-width: 640px)"], [true], false);
 
   useEffect(() => {
     setMounted(true);
@@ -57,21 +67,40 @@ const Header = () => {
                   Sign in
                 </button>
               ) : (
-                <div className="flex items-center space-x-1 sm:space-x-2">
-                  <Image
-                    src={session.user.image}
-                    alt={session.user.name}
-                    className="rounded-full border-2 border-blue-600 w-8 h-8"
-                    width={32}
-                    height={32}
+                <div className="relative" ref={containerRef}>
+                  <button
+                    onClick={() => setMenuOpen((prev) => !prev)}
+                    className="flex items-center space-x-1 sm:space-x-2"
+                  >
+                    <Image
+                      src={session.user.image}
+                      alt={session.user.name}
+                      className="rounded-full border-2 border-blue-600 w-8 h-8"
+                      width={32}
+                      height={32}
+                    />
+                    <p className="flex items-center sm:space-x-1">
+                      <span className="hidden sm:inline-block">
+                        Hello, {session.user.name?.split(" ")?.[0] ?? "there"}
+                      </span>
+                      <ChevronDoubleDownIcon className="w-4 h4- flex-shrink-0 mt-1" />
+                    </p>
+                  </button>
+                  <FlyoutMenu
+                    show={menuOpen && isLargeScreen}
+                    onClose={() => setMenuOpen(false)}
+                    containerRef={containerRef}
                   />
-                  <p>Hello, {session.user.name?.split(" ")?.[0] ?? "there"}</p>
                 </div>
               )}
             </div>
           ) : null}
         </div>
       </div>
+      <MobileMenu
+        show={menuOpen && !isLargeScreen}
+        onClose={() => setMenuOpen(false)}
+      />
     </header>
   );
 };
