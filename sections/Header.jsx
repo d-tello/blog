@@ -58,10 +58,12 @@ const Header = () => {
                 </button>
               ) : (
                 <div className="flex items-center space-x-1 sm:space-x-2">
-                  <img
+                  <Image
                     src={session.user.image}
                     alt={session.user.name}
                     className="rounded-full border-2 border-blue-600 w-8 h-8"
+                    width={32}
+                    height={32}
                   />
                   <p>Hello, {session.user.name?.split(" ")?.[0] ?? "there"}</p>
                 </div>
