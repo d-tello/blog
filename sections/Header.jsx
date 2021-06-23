@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
+import Image from "next/image";
 import { useSession, signIn } from "next-auth/client";
 import Logo from "../components/Logo";
 import { MoonIcon, SunIcon } from "@heroicons/react/solid";
@@ -57,7 +58,11 @@ const Header = () => {
                 </button>
               ) : (
                 <div className="flex items-center space-x-1 sm:space-x-2">
-                  <img src={session.user.image} alt={session.user.name} />
+                  <Image
+                    src={session.user.image}
+                    alt={session.user.name}
+                    className="rounded-full border-2 border-blue-600 w-8 h-8"
+                  />
                   <p>Hello, {session.user.name?.split(" ")?.[0] ?? "there"}</p>
                 </div>
               )}
