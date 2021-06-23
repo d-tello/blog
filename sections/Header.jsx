@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import { useSession, signIn } from "next-auth/client";
-import useMediaquery from "..hooks/use-media-query";
+import useMediaquery from "../hooks/use-media-query";
 import Logo from "../components/Logo";
 import FlyoutMenu from "../components/FlyoutMenu";
 import MobileMenu from "../components/MobileMenu";
