@@ -1,7 +1,7 @@
 import ReactDOM from "react-dom";
 import { useRouter } from "next/router";
 import { signOut } from "next-auth/client";
-import { Logo } from "./Logo";
+import Logo from "./Logo";
 import { LogoutIcon, XIcon } from "@heroicons/react/outline";
 
 const MobileMenu = ({ links = [], show = false, onClose = () => null }) => {
