@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useSession, signIn } from "next-auth/client";
 import Layout from "../sections/Layout";
-import { PencilAltIcon } from "@heroicons/react/outline";
+import { BookOpenIcon, PencilAltIcon } from "@heroicons/react/outline";
 
 export default function Home() {
   const [session, loading] = useSession();
@@ -19,30 +19,43 @@ export default function Home() {
             community!
           </h2>
         </div>
-        {loading ? null : !session ? (
-          <button
-            type="button"
-            onClick={signIn}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 
-            rounded-md border-2 border-blue-600 hover:border-blue-700 text-lg
-            sm:text-xl focus:outline-none focus:ring-4 focus:ring-blue-600
-            focus:ring-opacity-50 whitespace-nowrap"
-          >
-            Star you blog for free
-          </button>
-        ) : (
-          <Link href="/">
-            <a
+        <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
+          {loading ? null : !session ? (
+            <button
+              type="button"
+              onClick={signIn}
               className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 
             rounded-md border-2 border-blue-600 hover:border-blue-700 text-lg
             sm:text-xl focus:outline-none focus:ring-4 focus:ring-blue-600
-            focus:ring-opacity-50 whitespace-nowrap flex justify-center items-center space-x-2"
+            focus:ring-opacity-50 whitespace-nowrap"
             >
-              <PencilAltIcon className="w-6 h-6 flex-shrink-0" />
-              <span>Write a blog post</span>
+              Star you blog for free
+            </button>
+          ) : (
+            <Link href="/new">
+              <a
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 
+            rounded-md border-2 border-blue-600 hover:border-blue-700 text-lg
+            sm:text-xl focus:outline-none focus:ring-4 focus:ring-blue-600
+            focus:ring-opacity-50 whitespace-nowrap flex justify-center items-center space-x-2"
+              >
+                <PencilAltIcon className="w-6 h-6 flex-shrink-0" />
+                <span>Write a blog post</span>
+              </a>
+            </Link>
+          )}
+
+          <Link href="/posts">
+            <a
+              className="w-full bg-transparentbg text-blue-600 px-6 py-3 
+            rounded-md text-lg sm:text-xl border-2 border-blue-600
+            focus:outline-non whitespace-nowrap flex justify-center items-center space-x-2"
+            >
+              <BookOpenIcon className="w-6 h-6 flex-shrink-0" />
+              <span>Read the blog</span>
             </a>
           </Link>
-        )}
+        </div>
       </section>
     </Layout>
   );
