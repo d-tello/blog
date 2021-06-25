@@ -2,7 +2,7 @@ import Layout from "../sections/Layout";
 import Card from "../components/card";
 import faunaQueries from "../lib/fauna";
 
-const posts = ({ data }) => {
+const Posts = ({ data }) => {
   return (
     <Layout>
       <section className="text-center pt-12 sm:pt-24 pb-6">
@@ -10,7 +10,7 @@ const posts = ({ data }) => {
           Blog posts
         </h1>
       </section>
-      <div>
+      <div className="grid sm:grid-cols-2 gap-8 max-w-screen-lg mx-auto">
         {data.map((post) => (
           <Card key={post.id} {...post} />
         ))}
@@ -21,7 +21,8 @@ const posts = ({ data }) => {
 
 export async function getStaticProps() {
   try {
-    const data = await faunaQueries.getPosts();
+    const { data } = await faunaQueries.getPosts();
+
     return {
       props: {
         data,
