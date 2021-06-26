@@ -24,8 +24,8 @@ const Card = (props) => (
             src={props.author?.image}
             alt={props.author?.name}
             className="border-2 border-blue-600 rounded-full w-12 h-12"
-            width={48}
-            height={48}
+            width={32}
+            height={32}
           />
           <div className="text-sm">
             <p className="font-semibold">{props.author?.name}</p>
