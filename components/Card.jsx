@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { formatDate } from "../lib/utils";
 
 const Card = (props) => (
@@ -19,10 +20,12 @@ const Card = (props) => (
       </h3>
       {props?.author ? (
         <div className="flex items-center space-x-2 mb-4">
-          <img
+          <Image
             src={props.author?.image}
             alt={props.author?.name}
             className="border-2 border-blue-600 rounded-full w-12 h-12"
+            width={48}
+            height={48}
           />
           <div className="text-sm">
             <p className="font-semibold">{props.author?.name}</p>
