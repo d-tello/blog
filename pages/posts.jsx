@@ -22,7 +22,6 @@ const Posts = ({ data }) => {
 export async function getStaticProps() {
   try {
     const { data } = await faunaQueries.getPosts();
-
     return {
       props: {
         data,
