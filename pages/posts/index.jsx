@@ -1,6 +1,6 @@
-import Layout from "../sections/Layout";
-import Card from "../components/card";
-import faunaQueries from "../lib/fauna";
+import Layout from "../../sections/Layout";
+import Card from "../../components/card";
+import faunaQueries from "../../lib/fauna";
 
 const Posts = ({ data }) => {
   return (
