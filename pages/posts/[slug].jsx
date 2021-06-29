@@ -27,8 +27,8 @@ const Post = ({
         <article className="max-w-screen-lg mx-auto py-12 space-y-16">
           <header>
             <h1
-              className="max-w-screen-md lg:text-6xl md:text-5xl sm:text-4xl
-          text-3xl w-full font-extrabold leading-tight"
+              className="max-w-screen-md lg:text-6xl md:text-5xl mb-4
+              sm:text-4xl text-3xl w-full font-extrabold leading-tight"
             >
               {title}
             </h1>
