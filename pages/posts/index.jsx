@@ -1,5 +1,4 @@
 import Layout from "../../sections/Layout";
-import Card from "../../components/Card";
 import InfiniteDataList from "../../components/InfiniteDataList";
 import faunaQueries from "../../lib/fauna";
 
