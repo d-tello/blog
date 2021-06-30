@@ -24,7 +24,7 @@ const MobileMenu = ({ links = [], show = false, onClose = () => null }) => {
           dark:bg-gray-900 dark:text-gray-100 divide-y divide-gray-200
           dark:divide-gray-700"
       >
-        {links?.lenght > 0 ? (
+        {links?.length > 0 ? (
           <div className="px-5 pt-4 pb-6 space-y-8">
             {/* Header */}
             <div className=" flex items-center justify-between">
