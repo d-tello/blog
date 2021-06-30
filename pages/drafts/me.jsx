@@ -1,5 +1,5 @@
 import { getSession, useSession } from "next-auth/client";
-import { Layout } from "../../sections/Layout";
+import Layout from "../../sections/Layout";
 import InfiniteDataList from "../../components/InfiniteDataList";
 import faunaQueries from "../../lib/fauna";
 
