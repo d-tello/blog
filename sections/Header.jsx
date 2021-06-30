@@ -10,7 +10,28 @@ import {
   ChevronDoubleDownIcon,
   MoonIcon,
   SunIcon,
+  PlusCircleIcon,
+  GlobeIcon,
+  DocumentTextIcon,
 } from "@heroicons/react/solid";
+
+const links = [
+  {
+    text: "Write a new post",
+    icon: PlusCircleIcon,
+    href: "/new",
+  },
+  {
+    text: "My posts",
+    icon: GlobeIcon,
+    href: "/posts/me",
+  },
+  {
+    text: "My drafts",
+    icon: DocumentTextIcon,
+    href: "/drafts/me",
+  },
+];
 
 const Header = () => {
   const { systemTheme, theme, setTheme } = useTheme();
@@ -87,6 +108,7 @@ const Header = () => {
                     </p>
                   </button>
                   <FlyoutMenu
+                    links={links}
                     show={menuOpen && isLargeScreen}
                     onClose={() => setMenuOpen(false)}
                     containerRef={containerRef}
