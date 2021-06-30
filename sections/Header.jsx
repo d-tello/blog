@@ -120,6 +120,7 @@ const Header = () => {
         </div>
       </div>
       <MobileMenu
+        links={links}
         show={menuOpen && !isLargeScreen}
         onClose={() => setMenuOpen(false)}
       />
