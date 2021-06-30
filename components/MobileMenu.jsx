@@ -71,7 +71,7 @@ const MobileMenu = ({ links = [], show = false, onClose = () => null }) => {
             "
           >
             <LogoutIcon className="flex-shrink-0 h-7 w-7" />
-            <span className="font-medium capitalize"></span>
+            <span className="font-medium capitalize">Sign out</span>
           </button>
         </div>
       </div>
