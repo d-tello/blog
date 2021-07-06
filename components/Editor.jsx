@@ -102,7 +102,7 @@ const Editor = ({
               disabled:opacity-50 disabled:cursor-not-allowed disabled:text-current"
             >
               <TrashIcon className="w-6 h-6 flex-shrink-0" />
-              <span className="hidden sm:inline-block">Publish</span>
+              <span className="hidden sm:inline-block">Delete</span>
             </button>
           ) : null}
         </div>

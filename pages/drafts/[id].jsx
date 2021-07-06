@@ -14,7 +14,7 @@ import {
   RefreshIcon,
 } from "@heroicons/react/outline";
 
-const Draft = () => {
+const Draft = ({ initialData }) => {
   const router = useRouter();
   const [session] = useSession();
   const [publishing, setPublishing] = useState(false);
@@ -22,7 +22,8 @@ const Draft = () => {
 
   const { data, error, mutate } = useSWR(
     () => (session?.user ? `/api/posts/${router?.query?.id}` : null),
-    fetcher
+    fetcher,
+    initialData
   );
 
   const handleOnPublish = async (title, content) => {
