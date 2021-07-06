@@ -32,7 +32,7 @@ const Draft = ({ initialData }) => {
       if (title) {
         setPublishing(true);
         toastId = toast.loading("Publishing...");
-        const { data } = await axios.post(
+        const { data } = await axios.patch(
           `/api/posts/publish/${router?.query?.id}`,
           {
             title,
