@@ -68,7 +68,7 @@ const Draft = ({ initialData }) => {
   const handleOnChange = async (title, content) => {
     try {
       setSavingStatus("saving");
-      const { data } = await axios.patch(`/api.posts/${router?.query?.id}`, {
+      const { data } = await axios.patch(`/api/posts/${router?.query?.id}`, {
         title,
         content,
         author: session.user,
