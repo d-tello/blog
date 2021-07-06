@@ -13,7 +13,7 @@ const NewDraft = () => {
     try {
       const {
         data: { id },
-      } = await axios.post("/api/post", {
+      } = await axios.post("/api/posts", {
         title,
         content,
         author: session.user,
