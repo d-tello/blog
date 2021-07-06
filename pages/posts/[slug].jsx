@@ -3,6 +3,10 @@ import Image from "next/image";
 import { formatDate } from "../../lib/utils";
 import faunaQueries from "../../lib/fauna";
 import { useRouter } from "next/router";
+import Link from "next/link";
+import { PencilIcon } from "@heroicons/react/outline";
+import ReactMarkdown from "react-markdown";
+import MDComponents from "../../components/MDComponents";
 
 const Post = ({
   title = "",
@@ -32,19 +36,40 @@ const Post = ({
             >
               {title}
             </h1>
-            <div className="flex items-center space-x-2">
-              <Image
-                src={author?.image}
-                alt={author?.name}
-                className="w-16 h-16 rounded-full flex-shrink-0"
-                width={32}
-                height={32}
-              />
-              <p className="font-semibold">{author?.name}</p>
-              <p className="text-gray-500">{formatDate(published_at)}</p>
+            <div
+              className="flex flex-col sm:flex-row sm:justify-between
+            sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 border-b
+            border-t dark:border-gray-700 py-6"
+            >
+              <div className="flex items-center space-x-2">
+                <Image
+                  src={author?.image}
+                  alt={author?.name}
+                  className="w-16 h-16 rounded-full flex-shrink-0"
+                  width={32}
+                  height={32}
+                />
+                <p className="font-semibold">{author?.name}</p>
+                <p className="text-gray-500">{formatDate(published_at)}</p>
+              </div>
             </div>
+
+            <Link href={`/edit/${id}`}>
+              <a
+                className="bg-transparent hover:bg-gray-200
+              dark:hover:bg-gray-800 rounded-md ox-2 py-1 focus:outline-none
+              focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 flex
+              items-center space-x-1"
+              >
+                <PencilIcon className="w-5 h-5 flex-shrink-0" />
+                <span>Edit</span>
+              </a>
+            </Link>
           </header>
-          <main>{content}</main>
+
+          <main className="prose sm:prose-lg lg prose-xl dark:prose-dark max-w-none">
+            <ReactMarkdown children={content} components={MDComponents} />
+          </main>
         </article>
       )}
     </Layout>
