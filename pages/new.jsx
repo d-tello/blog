@@ -1,4 +1,4 @@
-import Layout from "../components/Layout";
+import Layout from "../sections/Layout";
 import Editor from "../components/Editor";
 import axios from "axios";
 import { useSession } from "next-auth/client";

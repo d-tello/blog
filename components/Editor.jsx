@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 import { useState, useEffect, useRef } from "react";
 import { useDebounce } from "use-debounce";
 import {

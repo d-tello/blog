@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 import Layout from "../../sections/Layout";
 import Image from "next/image";
 import { formatDate } from "../../lib/utils";
@@ -9,6 +10,7 @@ import ReactMarkdown from "react-markdown";
 import MDComponents from "../../components/MDComponents";
 
 const Post = ({
+  id = "",
   title = "",
   content = "",
   author = null,

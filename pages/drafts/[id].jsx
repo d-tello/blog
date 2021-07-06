@@ -12,7 +12,7 @@ import {
   CloudIcon,
   ExclamationCircleIcon,
   RefreshIcon,
-} from "@heroicons/react/putline";
+} from "@heroicons/react/outline";
 
 const Draft = () => {
   const router = useRouter();
