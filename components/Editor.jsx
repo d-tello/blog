@@ -112,7 +112,7 @@ const Editor = ({
         {activeTab === 0 ? (
           <textarea
             value={content}
-            onChange={() => setContent(e.target.value)}
+            onChange={(e) => setContent(e.target.value)}
             placeholder="Tell your story"
             disabled={disabled}
             className="w-full min-h-screen resize-none bg-transparent
